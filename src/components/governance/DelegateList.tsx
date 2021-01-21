@@ -29,6 +29,8 @@ import { useAllIdentities, useTwitterProfileData } from '../../state/social/hook
 import { nameOrAddress } from '../../utils/getName'
 import { FETCHING_INTERVAL } from '../../state/governance/reducer'
 import useENSName from '../../hooks/useENSName'
+import FilterResults from 'react-filter-search'
+import Search from '../Search'
 
 const ColumnLabel = styled(TYPE.darkGray)`
   white-space: no-wrap;
@@ -180,6 +182,15 @@ export default function DelegateList({ hideZero }: { hideZero: boolean }) {
     : 1
 
   const maxPage = maxCount ? Math.floor(maxCount / FETCHING_INTERVAL) + 1 : 1
+  
+  const [value, setValue] = useState('')
+
+  function handleChange(event: { target: HTMLInputElement; }) {
+    const { value } = event.target
+    console.log("HERE", value)
+
+    setValue(value)
+  }
 
   const DelegateRow = ({ d, index }: { d: DelegateData; index: number }) => {
     const name = nameOrAddress(d.id, allIdentities, true, d.autonomous)
@@ -257,66 +268,71 @@ export default function DelegateList({ hideZero }: { hideZero: boolean }) {
 
   const delegateList = useMemo(() => {
     return chainId && combinedDelegates && activeProtocol
-      ? combinedDelegates
+      ? 
+      <FilterResults
+        value={value}
+        data={combinedDelegates}
+        renderResults={(results: DelegateData[]) => 
+          results.length === 0
+            ? <AutoRow  justify='center' height='100px'><TYPE.black  textAlign="center" style={{ opacity: '0.6' }}>
+            None found!
+          </TYPE.black></AutoRow>
+            : 
+            results
           // filter for non zero votes
           // eslint-disable-next-line react/prop-types
           .filter(d => (hideZero ? !!(d.delegatedVotesRaw > 1) : true))
           .slice((page - 1) * FETCHING_INTERVAL, (page - 1) * FETCHING_INTERVAL + FETCHING_INTERVAL)
-          .map((d, i) => {
-            return <DelegateRow d={d} index={i} key={i} />
-          })
+          .map((d, i) => <DelegateRow d={d} index={i} key={i} />)
+        }
+      />
       : null
-  }, [chainId, activeProtocol, combinedDelegates, page, hideZero])
+  }, [chainId, activeProtocol, combinedDelegates, page, hideZero, value])
 
-  return combinedDelegates && combinedDelegates.length === 0 ? (
-    <GreyCard padding="20px">
-      <EmptyWrapper>
-        <TYPE.body style={{ marginBottom: '8px' }}>No delegates yet.</TYPE.body>
-        <TYPE.subHeader>
-          <i>Community members with delegated votes will appear here.</i>
-        </TYPE.subHeader>
-      </EmptyWrapper>
-    </GreyCard>
-  ) : (
-    <GreyCard padding="1rem 0">
-      <AutoColumn gap="lg">
-        <DataRow>
-          <ColumnLabel>Rank</ColumnLabel>
-          <OnlyAboveLarge>
-            <ColumnLabel textAlign="end">Proposals Voted</ColumnLabel>
-          </OnlyAboveLarge>
-          <OnlyAboveLarge>
-            <ColumnLabel textAlign="end">Vote Weight</ColumnLabel>
-          </OnlyAboveLarge>
-          <ColumnLabel textAlign="end">Total Votes</ColumnLabel>
-        </DataRow>
-
-        {combinedDelegates && combinedDelegates?.length > 0 ? (
-          delegateList
-        ) : (
-          <Row justify="center">
-            <Loader />
-          </Row>
-        )}
-      </AutoColumn>
-      <PageButtons>
-        <div
-          onClick={() => {
-            setPage(page === 1 ? page : page - 1)
-          }}
-        >
-          <Arrow faded={page === 1 ? true : false}>←</Arrow>
-        </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
-        <div
-          onClick={() => {
-            setPage(page === maxPage ? page : page + 1)
-            page !== maxPage && maxFetched && setMaxFetched(maxFetched + FETCHING_INTERVAL)
-          }}
-        >
-          <Arrow faded={page === maxPage ? true : false}>→</Arrow>
-        </div>
-      </PageButtons>
-    </GreyCard>
+  return (
+    <>
+      <GreyCard padding="1rem 1rem">
+        <AutoRow  justify='center'>
+          <Search handleChange={handleChange} value={value} setValue={setValue}/>
+          </AutoRow>
+      </GreyCard>
+      <GreyCard padding="1rem 0">
+        <AutoColumn gap="lg">
+          <DataRow>
+            <ColumnLabel>Rank</ColumnLabel>
+            <OnlyAboveLarge>
+              <ColumnLabel textAlign="end">Proposals Voted</ColumnLabel>
+            </OnlyAboveLarge>
+            <OnlyAboveLarge>
+              <ColumnLabel textAlign="end">Vote Weight</ColumnLabel>
+            </OnlyAboveLarge>
+            <ColumnLabel textAlign="end">Total Votes</ColumnLabel>
+          </DataRow>
+          {delegateList ?? (
+            <Row justify="center">
+              <Loader />
+            </Row>
+          )}
+        </AutoColumn>
+        <PageButtons>
+          <div
+            onClick={() => {
+              setPage(page === 1 ? page : page - 1)
+            }}
+          >
+            <Arrow faded={page === 1 ? true : false}>←</Arrow>
+          </div>
+          <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+          <div
+            onClick={() => {
+              setPage(page === maxPage ? page : page + 1)
+              page !== maxPage && maxFetched && setMaxFetched(maxFetched + FETCHING_INTERVAL)
+            }}
+          >
+            <Arrow faded={page === maxPage ? true : false}>→</Arrow>
+          </div>
+        </PageButtons>
+      </GreyCard>
+    </>
   )
 }
