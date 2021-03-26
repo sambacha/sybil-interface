@@ -8,9 +8,9 @@ import { addTransaction } from './actions'
 import { TransactionDetails } from './reducer'
 
 export interface CustomData {
-  summary?: string
-  approval?: { tokenAddress: string; spender: string }
-  claim?: { recipient: string }
+  summary?: string;
+  approval?: { tokenAddress: string; spender: string };
+  claim?: { recipient: string };
 }
 
 // helper that can take a ethers library transaction response and add it to the list of transactions

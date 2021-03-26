@@ -70,11 +70,11 @@ export default function AddressInputPanel({
   value,
   onChange
 }: {
-  id?: string
+  id?: string;
   // the typed string value
-  value: string
+  value: string;
   // triggers whenever the typed value changes
-  onChange: (value: string) => void
+  onChange: (value: string) => void;
 }) {
   const { chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)

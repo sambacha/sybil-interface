@@ -4,10 +4,10 @@ import { darken } from 'polished'
 import { Button as RebassButton, ButtonProps } from 'rebass/styled-components'
 
 const Base = styled(RebassButton)<{
-  padding?: string
-  width?: string
-  borderRadius?: string
-  altDisabledStyle?: boolean
+  padding?: string;
+  width?: string;
+  borderRadius?: string;
+  altDisabledStyle?: boolean;
 }>`
   padding: ${({ padding }) => (padding ? padding : '8px')};
   width: ${({ width }) => (width ? width : '100%')};

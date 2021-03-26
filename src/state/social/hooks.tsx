@@ -70,8 +70,8 @@ export function useIdentity(address: string | null | undefined): Identity | unde
 
 // monitor status of submission
 export interface VerifyResult {
-  readonly success: boolean
-  readonly error?: string | undefined
+  readonly success: boolean;
+  readonly error?: string | undefined;
 }
 
 // verify a new adress -> handle mapping
@@ -125,9 +125,9 @@ export function useVerifyCallback(tweetID: string | undefined): { verifyCallback
 }
 
 interface TwitterProfileData {
-  name: string
-  handle: string
-  profileURL: string
+  name: string;
+  handle: string;
+  profileURL: string;
 }
 // get handle and profile image from twitter
 export function useTwitterProfileData(handle: string | undefined | null): TwitterProfileData | undefined {

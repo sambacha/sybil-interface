@@ -34,9 +34,9 @@ const StyledToggle = styled.button<{ isActive?: boolean; activeElement?: boolean
 `
 
 export interface ToggleProps {
-  id?: string
-  isActive: boolean
-  toggle: () => void
+  id?: string;
+  isActive: boolean;
+  toggle: () => void;
 }
 
 export default function Toggle({ id, isActive, toggle }: ToggleProps) {

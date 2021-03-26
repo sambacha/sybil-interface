@@ -41,16 +41,16 @@ export default function AllVoters({
   amount,
   allVoters
 }: {
-  title: string
-  amount: number | undefined
+  title: string;
+  amount: number | undefined;
   allVoters:
     | {
-        votes: string
+        votes: string;
         voter: {
-          id: string
-        }
+          id: string;
+        };
       }[]
-    | undefined
+    | undefined;
 }) {
   // format voter name with indentity if it exists
   const [activeProtocol] = useActiveProtocol()

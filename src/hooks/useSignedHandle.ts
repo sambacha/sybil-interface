@@ -7,10 +7,10 @@ import { useActiveWeb3React } from '.'
 export function useSignedHandle(
   twitterHandle: string | undefined
 ): {
-  sig: string | undefined
-  signMessage: () => void
-  setSig: Dispatch<SetStateAction<string | undefined>>
-  error: string | undefined
+  sig: string | undefined;
+  signMessage: () => void;
+  setSig: Dispatch<SetStateAction<string | undefined>>;
+  error: string | undefined;
 } {
   // get signer and account to sign data with
   const { library, account } = useActiveWeb3React()

@@ -35,9 +35,9 @@ const TextButton = styled.div`
 `
 
 interface VoteModalProps {
-  isOpen: boolean
-  onDismiss: () => void
-  title: string
+  isOpen: boolean;
+  onDismiss: () => void;
+  title: string;
 }
 
 export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalProps) {

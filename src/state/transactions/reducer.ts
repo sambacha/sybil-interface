@@ -10,21 +10,21 @@ import {
 const now = () => new Date().getTime()
 
 export interface TransactionDetails {
-  hash: string
-  from: string
-  approval?: { tokenAddress: string; spender: string }
-  summary?: string
-  claim?: { recipient: string }
-  receipt?: SerializableTransactionReceipt
-  lastCheckedBlockNumber?: number
-  addedTime: number
-  confirmedTime?: number
+  hash: string;
+  from: string;
+  approval?: { tokenAddress: string; spender: string };
+  summary?: string;
+  claim?: { recipient: string };
+  receipt?: SerializableTransactionReceipt;
+  lastCheckedBlockNumber?: number;
+  addedTime: number;
+  confirmedTime?: number;
 }
 
 export interface TransactionState {
   [chainId: number]: {
-    [txHash: string]: TransactionDetails
-  }
+    [txHash: string]: TransactionDetails;
+  };
 }
 
 export const initialState: TransactionState = {}

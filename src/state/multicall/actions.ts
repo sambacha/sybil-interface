@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit'
 
 export interface Call {
-  address: string
-  callData: string
+  address: string;
+  callData: string;
 }
 
 const ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/
@@ -30,7 +30,7 @@ export function parseCallKey(callKey: string): Call {
 
 export interface ListenerOptions {
   // how often this data should be fetched, by default 1
-  readonly blocksPerFetch?: number
+  readonly blocksPerFetch?: number;
 }
 
 export const addMulticallListeners = createAction<{ chainId: number; calls: Call[]; options?: ListenerOptions }>(
@@ -43,14 +43,14 @@ export const fetchingMulticallResults = createAction<{ chainId: number; calls: C
   'multicall/fetchingMulticallResults'
 )
 export const errorFetchingMulticallResults = createAction<{
-  chainId: number
-  calls: Call[]
-  fetchingBlockNumber: number
+  chainId: number;
+  calls: Call[];
+  fetchingBlockNumber: number;
 }>('multicall/errorFetchingMulticallResults')
 export const updateMulticallResults = createAction<{
-  chainId: number
-  blockNumber: number
+  chainId: number;
+  blockNumber: number;
   results: {
-    [callKey: string]: string | null
-  }
+    [callKey: string]: string | null;
+  };
 }>('multicall/updateMulticallResults')

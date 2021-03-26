@@ -7,8 +7,8 @@ export default function FormattedCurrencyAmount({
   currencyAmount,
   significantDigits = 4
 }: {
-  currencyAmount: CurrencyAmount
-  significantDigits?: number
+  currencyAmount: CurrencyAmount;
+  significantDigits?: number;
 }) {
   return (
     <>

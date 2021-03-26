@@ -47,9 +47,9 @@ export default function PopupItem({
   content,
   popKey
 }: {
-  removeAfterMs: number | null
-  content: PopupContent
-  popKey: string
+  removeAfterMs: number | null;
+  content: PopupContent;
+  popKey: string;
 }) {
   const removePopup = useRemovePopup()
   const removeThisPopup = useCallback(() => removePopup(popKey), [popKey, removePopup])

@@ -35,11 +35,11 @@ const ConfirmedIcon = styled(ColumnCenter)`
 `
 
 interface VoteModalProps {
-  isOpen: boolean
-  onDismiss: () => void
-  support: boolean // if user is for or against proposal
-  proposalId: string | undefined // id for the proposal to vote on
-  proposalTitle: string | undefined
+  isOpen: boolean;
+  onDismiss: () => void;
+  support: boolean; // if user is for or against proposal
+  proposalId: string | undefined; // id for the proposal to vote on
+  proposalTitle: string | undefined;
 }
 
 export default function VoteModal({ isOpen, onDismiss, proposalId, proposalTitle, support }: VoteModalProps) {
@@ -47,7 +47,7 @@ export default function VoteModal({ isOpen, onDismiss, proposalId, proposalTitle
   const {
     voteCallback
   }: {
-    voteCallback: (proposalId: string | undefined, support: boolean) => Promise<string> | undefined
+    voteCallback: (proposalId: string | undefined, support: boolean) => Promise<string> | undefined;
   } = useVoteCallback()
   const availableVotes: TokenAmount | undefined = useUserVotes()
 

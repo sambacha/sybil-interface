@@ -3,8 +3,8 @@ import { UNISWAP_GRANTS } from './uniswap_grants'
 // Proposals are 0-indexed
 export const PRELOADED_PROPOSALS: {
   [protocol: string]: {
-    [key: number]: any
-  }
+    [key: number]: any;
+  };
 } = {
   uniswap: {
     2: UNISWAP_GRANTS

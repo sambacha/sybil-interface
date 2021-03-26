@@ -66,10 +66,10 @@ export function TransactionSubmittedContent({
   hash,
   confirmationText
 }: {
-  onDismiss: () => void
-  hash?: string | undefined
-  chainId?: ChainId
-  confirmationText?: string
+  onDismiss: () => void;
+  hash?: string | undefined;
+  chainId?: ChainId;
+  confirmationText?: string;
 }) {
   const theme = useContext(ThemeContext)
 
@@ -111,10 +111,10 @@ export function ConfirmationModalContent({
   onDismiss,
   topContent
 }: {
-  title: string
-  onDismiss: () => void
-  topContent: () => React.ReactNode
-  bottomContent: () => React.ReactNode
+  title: string;
+  onDismiss: () => void;
+  topContent: () => React.ReactNode;
+  bottomContent: () => React.ReactNode;
 }) {
   return (
     <Wrapper>
@@ -158,12 +158,12 @@ export function TransactionErrorContent({ message, onDismiss }: { message: strin
 }
 
 interface ConfirmationModalProps {
-  isOpen: boolean
-  onDismiss: () => void
-  hash: string | undefined
-  content: () => React.ReactNode
-  attemptingTxn: boolean
-  pendingText: string
+  isOpen: boolean;
+  onDismiss: () => void;
+  hash: string | undefined;
+  content: () => React.ReactNode;
+  attemptingTxn: boolean;
+  pendingText: string;
 }
 
 export default function TransactionConfirmationModal({

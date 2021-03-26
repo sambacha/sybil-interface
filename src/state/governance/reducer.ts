@@ -18,24 +18,24 @@ import RadicleLogo from '../../assets/images/radicle-logo.svg'
 import { serializeToken } from '../user/hooks'
 
 export interface GovernanceInfo {
-  id: string
-  name: string
-  logo: string
-  primaryColor: string
-  secondaryColor: string
-  token: SerializedToken
-  governanceAddress: string
-  social: string
-  emoji?: string
+  id: string;
+  name: string;
+  logo: string;
+  primaryColor: string;
+  secondaryColor: string;
+  token: SerializedToken;
+  governanceAddress: string;
+  social: string;
+  emoji?: string;
 }
 
 // protocol wide data
 export interface GlobaData {
-  id: string
-  totalTokenHolders: number
-  totalDelegates: number
-  delegatedVotes: number
-  delegatedVotesRaw: number
+  id: string;
+  totalTokenHolders: number;
+  totalDelegates: number;
+  delegatedVotes: number;
+  delegatedVotesRaw: number;
 }
 
 // constant addresses for supported protocols
@@ -132,29 +132,29 @@ export const FETCHING_INTERVAL = 50
 
 export interface GovernanceState {
   // the selected option from supported protocol options
-  activeProtocol: GovernanceInfo | undefined
+  activeProtocol: GovernanceInfo | undefined;
 
   // filter only verified delegates
-  filterActive: boolean
+  filterActive: boolean;
 
   // top delegates based on votes
   topDelegates: {
-    [protocolID: string]: DelegateData[] | undefined
-  }
+    [protocolID: string]: DelegateData[] | undefined;
+  };
 
   // used for paginated delegate lookup
   maxFetched: {
-    [protocolID: string]: number | undefined
-  }
+    [protocolID: string]: number | undefined;
+  };
 
   // only delegates with verified usernames
   verifiedDelegates: {
-    [protocolID: string]: DelegateData[] | undefined
-  }
+    [protocolID: string]: DelegateData[] | undefined;
+  };
 
   globalData: {
-    [protocolID: string]: GlobaData | undefined
-  }
+    [protocolID: string]: GlobaData | undefined;
+  };
 }
 
 export const initialState: GovernanceState = {
