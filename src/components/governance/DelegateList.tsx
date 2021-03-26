@@ -1,3 +1,5 @@
+/* eslint-disable */
+/** @dev NOTE temp eslint disable */
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { AutoColumn } from '../Column'
