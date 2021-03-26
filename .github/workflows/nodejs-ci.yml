@@ -3,8 +3,8 @@ name: nodejs-ci
 on:
   push:
      paths:
-      - "*.js"
-      - "!**/*.md/**"
+      - '**.tsx?'
+      - '!**/*.md/**'
 
 env:
   CI: true
