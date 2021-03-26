@@ -1,6 +1,15 @@
 name: nodejs-ci
 
-on: [push, pull_request]
+on:
+  push:
+     paths:
+      - "*.js"
+      - "!**/*.md/**"
+
+env:
+  CI: true
+  FORCE_COLOR: 2
+
 
 jobs:
   build:
