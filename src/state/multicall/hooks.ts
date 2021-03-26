@@ -16,7 +16,7 @@ import {
 } from './actions'
 
 export interface Result extends ReadonlyArray<any> {
-  readonly [key: string]: any
+  readonly [key: string]: any;
 }
 
 type MethodArg = string | number | BigNumber
@@ -36,9 +36,9 @@ function isValidMethodArgs(x: unknown): x is MethodArgs | undefined {
 }
 
 interface CallResult {
-  readonly valid: boolean
-  readonly data: string | undefined
-  readonly blockNumber: number | undefined
+  readonly valid: boolean;
+  readonly data: string | undefined;
+  readonly blockNumber: number | undefined;
 }
 
 const INVALID_RESULT: CallResult = { valid: false, blockNumber: undefined, data: undefined }
@@ -107,15 +107,15 @@ function useCallsData(calls: (Call | undefined)[], options?: ListenerOptions): C
 }
 
 interface CallState {
-  readonly valid: boolean
+  readonly valid: boolean;
   // the result, or undefined if loading or errored/no data
-  readonly result: Result | undefined
+  readonly result: Result | undefined;
   // true if the result has never been fetched
-  readonly loading: boolean
+  readonly loading: boolean;
   // true if the result is not for the latest block
-  readonly syncing: boolean
+  readonly syncing: boolean;
   // true if the call was made and is synced, but the return data is invalid
-  readonly error: boolean
+  readonly error: boolean;
 }
 
 const INVALID_CALL_STATE: CallState = { valid: false, result: undefined, loading: false, syncing: false, error: false }

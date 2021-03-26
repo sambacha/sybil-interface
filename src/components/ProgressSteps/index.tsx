@@ -45,8 +45,8 @@ const Connector = styled.div<{ prevConfirmed?: boolean; disabled?: boolean }>`
 `
 
 interface ProgressCirclesProps {
-  steps: boolean[]
-  disabled?: boolean
+  steps: boolean[];
+  disabled?: boolean;
 }
 
 /**

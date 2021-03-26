@@ -3,17 +3,17 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import invariant from 'tiny-invariant'
 
 interface NetworkConnectorArguments {
-  urls: { [chainId: number]: string }
-  defaultChainId?: number
+  urls: { [chainId: number]: string };
+  defaultChainId?: number;
 }
 
 // taken from ethers.js, compatible interface with web3 provider
 type AsyncSendable = {
-  isMetaMask?: boolean
-  host?: string
-  path?: string
-  sendAsync?: (request: any, callback: (error: any, response: any) => void) => void
-  send?: (request: any, callback: (error: any, response: any) => void) => void
+  isMetaMask?: boolean;
+  host?: string;
+  path?: string;
+  sendAsync?: (request: any, callback: (error: any, response: any) => void) => void;
+  send?: (request: any, callback: (error: any, response: any) => void) => void;
 }
 
 class RequestError extends Error {
@@ -23,9 +23,9 @@ class RequestError extends Error {
 }
 
 interface BatchItem {
-  request: { jsonrpc: '2.0'; id: number; method: string; params: unknown }
-  resolve: (result: any) => void
-  reject: (error: Error) => void
+  request: { jsonrpc: '2.0'; id: number; method: string; params: unknown };
+  resolve: (result: any) => void;
+  reject: (error: Error) => void;
 }
 
 class MiniRpcProvider implements AsyncSendable {

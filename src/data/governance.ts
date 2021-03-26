@@ -12,14 +12,14 @@ import { AUTONOMOUS_PROPOSAL_BYTECODE } from '../constants/proposals'
 
 interface DelegateResponse {
   data: {
-    delegates: DelegateData[]
-  }
+    delegates: DelegateData[];
+  };
 }
 
 interface GlobalResponse {
   data: {
-    governances: GlobaData[]
-  }
+    governances: GlobaData[];
+  };
 }
 
 export async function fetchGlobalData(client: any): Promise<GlobaData | null> {
@@ -44,9 +44,9 @@ export async function fetchGlobalData(client: any): Promise<GlobaData | null> {
 }
 
 interface DelegateQuery {
-  query: DocumentNode
-  variables?: { list?: false | string[] | undefined; skip?: number | undefined }
-  fetchPolicy: string
+  query: DocumentNode;
+  variables?: { list?: false | string[] | undefined; skip?: number | undefined };
+  fetchPolicy: string;
 }
 
 async function fetchDelegatesFromClient(
@@ -164,34 +164,34 @@ export async function fetchVerifiedDelegates(
 interface ProposalResponse {
   data: {
     proposals: {
-      id: string
+      id: string;
       proposer: {
-        [id: string]: string
-      }
-      description: string
-      status: string | undefined
-      targets: string[]
-      values: string[]
-      signatures: string[]
-      calldatas: string[]
-      startBlock: string
-      endBlock: string
+        [id: string]: string;
+      };
+      description: string;
+      status: string | undefined;
+      targets: string[];
+      values: string[];
+      signatures: string[];
+      calldatas: string[];
+      startBlock: string;
+      endBlock: string;
       forVotes: {
-        support: boolean
-        votes: string
+        support: boolean;
+        votes: string;
         voter: {
-          id: string
-        }
-      }[]
+          id: string;
+        };
+      }[];
       againstVotes: {
-        support: boolean
-        votes: string
+        support: boolean;
+        votes: string;
         voter: {
-          id: string
-        }
-      }[]
-    }[]
-  }
+          id: string;
+        };
+      }[];
+    }[];
+  };
 }
 
 export const enumerateProposalState = (state: number) => {

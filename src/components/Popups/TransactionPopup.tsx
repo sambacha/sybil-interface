@@ -17,9 +17,9 @@ export default function TransactionPopup({
   success,
   summary
 }: {
-  hash: string
-  success?: boolean
-  summary?: string
+  hash: string;
+  success?: boolean;
+  summary?: string;
 }) {
   const { chainId } = useActiveWeb3React()
 

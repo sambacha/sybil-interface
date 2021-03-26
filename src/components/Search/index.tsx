@@ -36,9 +36,9 @@ const StyledSearch = styled.form`
 `
 
 interface SearchProps {
-  handleChange: (event: { target: HTMLInputElement }) => void
-  value: any
-  setValue: (value: string) => void
+  handleChange: (event: { target: HTMLInputElement }) => void;
+  value: any;
+  setValue: (value: string) => void;
 }
 
 export default function Search({ handleChange, value, setValue }: SearchProps) {

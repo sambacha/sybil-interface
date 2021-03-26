@@ -99,16 +99,16 @@ export default function Option({
   active = false,
   id
 }: {
-  link?: string | null
-  clickable?: boolean
-  size?: number | null
-  onClick?: null | (() => void)
-  color: string
-  header: React.ReactNode
-  subheader: React.ReactNode | null
-  icon: string
-  active?: boolean
-  id: string
+  link?: string | null;
+  clickable?: boolean;
+  size?: number | null;
+  onClick?: null | (() => void);
+  color: string;
+  header: React.ReactNode;
+  subheader: React.ReactNode | null;
+  icon: string;
+  active?: boolean;
+  id: string;
 }) {
   const content = (
     <OptionCardClickable id={id} onClick={onClick} clickable={clickable && !active} active={active}>

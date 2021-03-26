@@ -26,19 +26,19 @@ import { useIsEOA } from '../../hooks/useIsEOA'
 import { AUTONOMOUS_PROPOSAL_BYTECODE } from '../../constants/proposals'
 
 export interface DelegateData {
-  id: string
-  delegatedVotes: number
-  delegatedVotesRaw: number
-  votePercent: Percent
+  id: string;
+  delegatedVotes: number;
+  delegatedVotesRaw: number;
+  votePercent: Percent;
   votes: {
-    id: string
-    support: boolean
-    votes: number
-  }[]
-  EOA: boolean | undefined //
-  autonomous: boolean | undefined
-  handle: string | undefined // twitter handle
-  imageURL?: string | undefined
+    id: string;
+    support: boolean;
+    votes: number;
+  }[];
+  EOA: boolean | undefined; //
+  autonomous: boolean | undefined;
+  handle: string | undefined; // twitter handle
+  imageURL?: string | undefined;
 }
 
 export function useActiveProtocol(): [GovernanceInfo | undefined, (activeProtocol: GovernanceInfo) => void] {
@@ -145,36 +145,36 @@ export function useVerifiedDelegates(): [
 }
 
 interface ProposalDetail {
-  target: string
-  functionSig: string
-  callData: string
+  target: string;
+  functionSig: string;
+  callData: string;
 }
 
 export interface ProposalData {
-  id: string
-  title: string
-  description: string
-  proposer: string
-  status: string
-  forCount: number | undefined
-  againstCount: number | undefined
-  startBlock: number
-  endBlock: number
-  details: ProposalDetail[]
+  id: string;
+  title: string;
+  description: string;
+  proposer: string;
+  status: string;
+  forCount: number | undefined;
+  againstCount: number | undefined;
+  startBlock: number;
+  endBlock: number;
+  details: ProposalDetail[];
   forVotes: {
-    support: boolean
-    votes: string
+    support: boolean;
+    votes: string;
     voter: {
-      id: string
-    }
-  }[]
+      id: string;
+    };
+  }[];
   againstVotes: {
-    support: boolean
-    votes: string
+    support: boolean;
+    votes: string;
     voter: {
-      id: string
-    }
-  }[]
+      id: string;
+    };
+  }[];
 }
 
 // get count of all proposals made
@@ -364,7 +364,7 @@ export function useDelegateCallback(): (delegatee: string | undefined) => undefi
 }
 
 export function useVoteCallback(): {
-  voteCallback: (proposalId: string | undefined, support: boolean) => undefined | Promise<string>
+  voteCallback: (proposalId: string | undefined, support: boolean) => undefined | Promise<string>;
 } {
   const { account } = useActiveWeb3React()
 
@@ -410,20 +410,20 @@ export function useAllVotersForProposal(
   support: boolean
 ):
   | {
-      votes: string
+      votes: string;
       voter: {
-        id: string
-      }
+        id: string;
+      };
     }[]
   | undefined {
   const subgraphClient = useSubgraphClient()
 
   const [voters, setVoters] = useState<
     | {
-        votes: string
+        votes: string;
         voter: {
-          id: string
-        }
+          id: string;
+        };
       }[]
     | undefined
   >()
@@ -446,12 +446,12 @@ export function useAllVotersForProposal(
           (res: {
             data: {
               votes: {
-                votes: string
+                votes: string;
                 voter: {
-                  id: string
-                }
-              }[]
-            }
+                  id: string;
+                };
+              }[];
+            };
           }) => {
             setVoters(res.data.votes)
           }
@@ -467,39 +467,39 @@ export function useAllVotersForProposal(
 
 export interface DelegateInfo {
   // amount of votes delegated to them
-  delegatedVotes: number
+  delegatedVotes: number;
 
   // amount of delegates they represent
-  tokenHoldersRepresentedAmount: number
+  tokenHoldersRepresentedAmount: number;
 
   // proposals theyve voted on
   votes: {
-    proposal: number
-    votes: number
-    support: boolean
-  }[]
+    proposal: number;
+    votes: number;
+    support: boolean;
+  }[];
 
-  EOA: boolean | null // null means loading
-  autonomous?: boolean
+  EOA: boolean | null; // null means loading
+  autonomous?: boolean;
 }
 
 interface DelegateInfoRes {
   data:
     | {
         delegates: {
-          id: string
-          delegatedVotes: string
-          tokenHoldersRepresentedAmount: number
+          id: string;
+          delegatedVotes: string;
+          tokenHoldersRepresentedAmount: number;
           votes: {
             proposal: {
-              id: string
-            }
-            support: boolean
-            votes: string
-          }[]
-        }[]
+              id: string;
+            };
+            support: boolean;
+            votes: string;
+          }[];
+        }[];
       }
-    | undefined
+    | undefined;
 }
 
 // undefined means loading, null means no delegate found

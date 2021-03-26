@@ -8,11 +8,11 @@ declare module 'fortmatic'
 
 interface Window {
   ethereum?: {
-    isMetaMask?: true
-    on?: (...args: any[]) => void
-    removeListener?: (...args: any[]) => void
-  }
-  web3?: {}
+    isMetaMask?: true;
+    on?: (...args: any[]) => void;
+    removeListener?: (...args: any[]) => void;
+  };
+  web3?: {};
 }
 
 declare module 'content-hash' {

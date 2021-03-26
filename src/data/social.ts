@@ -36,11 +36,11 @@ export async function fetchAllIdentities(): Promise<Identities | undefined> {
 
 export interface ProfileDataResponse {
   data: {
-    id: number
-    name: string
-    username: string
-    profile_image_url: string
-  }
+    id: number;
+    name: string;
+    username: string;
+    profile_image_url: string;
+  };
 }
 const PROFILE_DATA_PROMISES: { [key: string]: Promise<ProfileDataResponse | null> } = {}
 
@@ -70,10 +70,10 @@ export function fetchProfileData(handle: string): Promise<ProfileDataResponse | 
 export interface LatestTweetResponse {
   data: [
     {
-      id: string
-      text: string
+      id: string;
+      text: string;
     }
-  ]
+  ];
 }
 
 // dont save responses as user may need to tweet multiple times

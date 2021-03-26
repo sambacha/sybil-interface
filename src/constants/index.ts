@@ -12,15 +12,15 @@ export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 export const AVERAGE_BLOCK_TIME_IN_SECS = 13
 
 export interface WalletInfo {
-  connector?: AbstractConnector
-  name: string
-  iconName: string
-  description: string
-  href: string | null
-  color: string
-  primary?: true
-  mobile?: true
-  mobileOnly?: true
+  connector?: AbstractConnector;
+  name: string;
+  iconName: string;
+  description: string;
+  href: string | null;
+  color: string;
+  primary?: true;
+  mobile?: true;
+  mobileOnly?: true;
 }
 
 export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {

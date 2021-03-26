@@ -76,10 +76,10 @@ const Arrow = styled.div`
 `
 
 export interface PopoverProps {
-  content: React.ReactNode
-  show: boolean
-  children: React.ReactNode
-  placement?: Placement
+  content: React.ReactNode;
+  show: boolean;
+  children: React.ReactNode;
+  placement?: Placement;
 }
 
 export default function Popover({ content, show, children, placement = 'auto' }: PopoverProps) {

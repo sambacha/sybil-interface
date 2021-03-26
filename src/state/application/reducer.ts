@@ -12,10 +12,10 @@ import {
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
 export interface ApplicationState {
-  readonly blockNumber: { readonly [chainId: number]: number }
-  readonly popupList: PopupList
-  readonly openModal: ApplicationModal | null
-  readonly modalDelegatee: string | null | undefined // for prefilling modal
+  readonly blockNumber: { readonly [chainId: number]: number };
+  readonly popupList: PopupList;
+  readonly openModal: ApplicationModal | null;
+  readonly modalDelegatee: string | null | undefined; // for prefilling modal
 }
 
 const initialState: ApplicationState = {

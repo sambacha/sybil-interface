@@ -211,11 +211,11 @@ function renderTransactions(transactions: string[]) {
 }
 
 interface AccountDetailsProps {
-  toggleWalletModal: () => void
-  pendingTransactions: string[]
-  confirmedTransactions: string[]
-  ENSName?: string
-  openOptions: () => void
+  toggleWalletModal: () => void;
+  pendingTransactions: string[];
+  confirmedTransactions: string[];
+  ENSName?: string;
+  openOptions: () => void;
 }
 
 export default function AccountDetails({

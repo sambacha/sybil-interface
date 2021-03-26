@@ -43,9 +43,9 @@ export function SubmittedView({
   onDismiss,
   hash
 }: {
-  children: any
-  onDismiss: () => void
-  hash: string | undefined
+  children: any;
+  onDismiss: () => void;
+  hash: string | undefined;
 }) {
   const theme = useContext(ThemeContext)
   const { chainId } = useActiveWeb3React()

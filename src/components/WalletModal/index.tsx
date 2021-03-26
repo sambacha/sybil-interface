@@ -121,9 +121,9 @@ export default function WalletModal({
   confirmedTransactions,
   ENSName
 }: {
-  pendingTransactions: string[] // hashes of pending
-  confirmedTransactions: string[] // hashes of confirmed
-  ENSName?: string
+  pendingTransactions: string[]; // hashes of pending
+  confirmedTransactions: string[]; // hashes of confirmed
+  ENSName?: string;
 }) {
   // important that these are destructed from the account-specific web3-react context
   const { active, account, connector, activate, error } = useWeb3React()

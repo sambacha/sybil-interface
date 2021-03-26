@@ -68,18 +68,18 @@ export default function VoterList({
   support,
   id
 }: {
-  title: string
-  amount: number | undefined
-  percentage: string
+  title: string;
+  amount: number | undefined;
+  percentage: string;
   voters: {
-    support: boolean
-    votes: string
+    support: boolean;
+    votes: string;
     voter: {
-      id: string
-    }
-  }[]
-  support: 'for' | 'against'
-  id: string
+      id: string;
+    };
+  }[];
+  support: 'for' | 'against';
+  id: string;
 }) {
   const [showAll, setShowAll] = useState(false)
   const allVoters = useAllVotersForProposal(id, support === 'for')
