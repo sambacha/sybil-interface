@@ -1,9 +1,9 @@
-name: nodejs-ci
+name: nodejs
 
 on:
   push:
      paths:
-      - '**/.tsx?/**'
+      - '**/*src/**'
       - '!**/*.md/**'
 
 env:
