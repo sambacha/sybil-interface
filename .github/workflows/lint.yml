@@ -8,41 +8,57 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    shell: bash
+
+env:
+#  CI: ''
+  COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+  PULL_NUMBER: ${{ github.event.pull_request.number }}
+  RUN_ID: ${{ github.run_id }}
+  
+
 jobs:
   run-linters:
-    name: Run linters
-    runs-on: ubuntu-latest
+    name: Node ${{ matrix.node-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: FALSE
+      matrix:
+        node-version: ['16.x']
+        os: ['ubuntu-latest']
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up node
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 12
-          always-auth: true
+          node-version: ${{ matrix.node-version }}
+          always-auth: TRUE
           registry-url: https://registry.npmjs.org
-
-      - name: Set output of cache
-        id: yarn-cache
+          
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Node dependency cache
-        uses: actions/cache@v1
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            yarn-
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+            ${{ runner.os }}-yarn-
+      - name: Install project dependencies
+        run: yarn --prefer-offline
+        id: install
 
       - name: Run linters
-        uses: wearerequired/lint-action@77d70b9a07ecb93bc98dc46dc27d96c4f004d035
+        uses: wearerequired/lint-action@94a1ac73d275466b5c62adb357f4c6c1cb17595e
+        id: lint
         with:
-          github_token: ${{ secrets.github_token }}
-          eslint: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          eslint: TRUE
           eslint_extensions: js,jsx,ts,tsx,json
-          auto_fix: true
+          auto_fix: TRUE
