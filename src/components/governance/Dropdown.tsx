@@ -60,8 +60,8 @@ const ResponsiveText = styled(TYPE.mediumHeader)`
   @media (max-width: 720px) {
     font-size: 16px !important;
   }
+`
 
-/** @const Votes */
 const Votes = styled(GreyCard)`
   padding-top: 56px;
   margin-top: -60px;
